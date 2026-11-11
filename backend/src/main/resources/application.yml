@@ -1,0 +1,65 @@
+server:
+  forward-headers-strategy: ${FORWARD_HEADERS:none}   # set to 'framework' ONLY behind a trusted reverse proxy/tunnel
+  address: ${SERVER_ADDRESS:127.0.0.1}   # localhost-only by default (NFR-SEC-06)
+  port: ${SERVER_PORT:8080}
+  error:
+    include-message: never
+    include-stacktrace: never
+
+spring:
+  application:
+    name: codesentinel
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://127.0.0.1:5432/codesentinel}
+    username: ${POSTGRES_USER:codesentinel}
+    password: ${POSTGRES_PASSWORD:}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate.jdbc.time_zone: UTC
+  flyway:
+    enabled: true
+  servlet:
+    multipart:
+      max-file-size: 12MB
+      max-request-size: 40MB
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: never
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:}              # required, >= 32 chars; the app refuses to start without it
+    ttl-minutes: ${JWT_TTL_MINUTES:480}
+  cors-origin: ${CORS_ORIGIN:http://127.0.0.1:5173}
+  static-dir: ${STATIC_DIR:}             # production: path to frontend/dist; the backend then serves the UI itself (same origin)
+  rate-limit-per-minute: ${RATE_LIMIT_PER_MINUTE:30}   # per client IP for login/register/upload
+  registration-enabled: ${REGISTRATION_ENABLED:true}
+  seed-demo: ${SEED_DEMO:false}
+  storage:
+    provider: ${STORAGE_PROVIDER:local}
+    root: ${STORAGE_ROOT:./storage}
+  bootstrap:
+    instructor-email: ${BOOTSTRAP_INSTRUCTOR_EMAIL:}
+    instructor-password: ${BOOTSTRAP_INSTRUCTOR_PASSWORD:}
+  worker:
+    enabled: ${JUDGE_WORKER_ENABLED:true}
+    poll-millis: ${JUDGE_POLL_MILLIS:1500}
+    stuck-minutes: 10
+    max-attempts: 2
+  plag:
+    k: ${PLAG_K:10}
+    w: ${PLAG_W:5}
+    candidate-cutoff: ${PLAG_CANDIDATE_CUTOFF:0.30}
+    high-priority-threshold: ${PLAG_HIGH_PRIORITY_THRESHOLD:0.80}
+  judge:
+    docker-bin: ${DOCKER_BIN:docker}
+    work-root: ${JUDGE_WORK_ROOT:}

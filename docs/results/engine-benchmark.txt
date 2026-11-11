@@ -1,0 +1,13 @@
+DIVERSE (REALISTIC) WORKLOAD
+Benchmark (synthetic): 100 submissions, ~314 lines each (first program), default config
+Best of 3 timed runs after 1 warm-up: 2107 ms (engine-reported last run: 2466 ms)
+Possible pairs: 4950, candidate pairs after index+Dice filter: 3, pairs flagged for review: 3 (3 planted copies)
+Java 25.0.4.1 (OpenJDK 64-Bit Server VM), OS Linux amd64, CPUs 12, max heap 3904 MB
+NOTE: target is < 5000 ms; this is a measurement on this machine, not a guarantee.
+
+HOMOGENEOUS WORST-CASE WORKLOAD
+Benchmark (synthetic): 100 submissions, ~312 lines each (first program), default config
+Best of 3 timed runs after 1 warm-up: 3441 ms (engine-reported last run: 3441 ms)
+Possible pairs: 4950, candidate pairs after index+Dice filter: 4948, pairs flagged for review: 0 (3 planted copies)
+Java 25.0.4.1 (OpenJDK 64-Bit Server VM), OS Linux amd64, CPUs 12, max heap 3904 MB
+NOTE: target is < 5000 ms; this is a measurement on this machine, not a guarantee.

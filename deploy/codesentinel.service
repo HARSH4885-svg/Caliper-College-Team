@@ -1,0 +1,21 @@
+[Unit]
+Description=CodeSentinel backend (API, UI, judge worker)
+After=network-online.target docker.service
+Requires=docker.service
+
+[Service]
+User=codesentinel
+Group=codesentinel
+SupplementaryGroups=docker
+WorkingDirectory=/opt/codesentinel
+EnvironmentFile=/etc/codesentinel/prod.env
+ExecStart=/usr/bin/java -Xmx512m -jar /opt/codesentinel/backend/target/codesentinel-backend-0.1.0.jar
+Restart=on-failure
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=false
+ProtectSystem=full
+ReadWritePaths=/var/lib/codesentinel /tmp
+
+[Install]
+WantedBy=multi-user.target

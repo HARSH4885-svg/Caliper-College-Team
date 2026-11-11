@@ -1,0 +1,8 @@
+# Runner-only process: no HTTP server, consumes persisted jobs from PostgreSQL.
+# Start with: --spring.profiles.active=worker
+spring:
+  main:
+    web-application-type: none
+app:
+  worker:
+    enabled: true

@@ -1,0 +1,23 @@
+# PostgreSQL only. The app itself runs on the host; student code runs in separate ephemeral containers
+# started by the judge worker (never inside this compose project).
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: codesentinel-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-codesentinel}
+      POSTGRES_USER: ${POSTGRES_USER:-codesentinel}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+    ports:
+      - "127.0.0.1:5432:5432"   # localhost only (NFR-SEC-06)
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  pgdata:

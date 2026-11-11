@@ -1,0 +1,8 @@
+# Replace codesentinel.example.com with your domain (DNS A record -> this server). Caddy gets and renews the TLS certificate itself.
+{$SITE_ADDRESS:localhost} {
+	encode gzip
+	reverse_proxy 127.0.0.1:8080
+	request_body {
+		max_size 20MB
+	}
+}

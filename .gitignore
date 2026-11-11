@@ -1,0 +1,26 @@
+# Build output
+target/
+node_modules/
+dist/
+*.class
+
+# Secrets and local config (NFR-SEC-05)
+.env
+.env.*
+!.env.example
+*.pem
+*.p12
+google-credentials*.json
+secrets/
+
+# Runtime data: uploaded submissions, hidden tests, local DB volume
+storage/*
+!storage/.gitkeep
+.work/
+*.log
+
+# IDE / OS
+.idea/
+.vscode/
+*.iml
+.DS_Store

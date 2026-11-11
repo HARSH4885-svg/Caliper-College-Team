@@ -1,0 +1,6 @@
+# SYNTHETIC test data. Each row is an intentionally copied pair (ground truth = copy). Every other pair is independent.
+I03_insertion_recursive,C01_exact_copy_of_I03
+I04_selection_linear,C02_renamed_commented_of_I04
+I06_merge_binary,C03_reformatted_of_I06
+I07_quick_binary,C04_padded_of_I07
+I01_bubble_binary,C05_reordered_renamed_of_I01
