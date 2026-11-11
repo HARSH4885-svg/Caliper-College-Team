@@ -31,12 +31,16 @@ class JudgeDockerIT {
     }
 
     private JudgeResult run(Path dir, String lang, String file, String code, TestCase... tests) throws Exception {
+        return run(dir, lang, file, code, 2000, tests);
+    }
+
+    private JudgeResult run(Path dir, String lang, String file, String code, int timeLimitMs, TestCase... tests) throws Exception {
         assumeTrue(ready, "Docker or sandbox images unavailable");
         Path src = dir.resolve("s");
         Files.createDirectories(src.resolve(file).getParent());
         Files.writeString(src.resolve(file), code);
         Judge j = new Judge(runner, new JudgeConfig(dir.resolve("work"), 120_000, 768, 240_000, 6_000, 64, 1.0, 16, 100, 20_000, 16, 1024, 2048));
-        return j.judge(new JudgeRequest("it", lang, src, List.of(file), List.of(tests), 2000, 128, 65536));
+        return j.judge(new JudgeRequest("it", lang, src, List.of(file), List.of(tests), timeLimitMs, 128, 65536));
     }
 
     private static final TestCase SUM = new TestCase("sum", "1 2 3\n", "6", true);
@@ -86,7 +90,8 @@ class JudgeDockerIT {
     }
     @Test void mleAllocation(@TempDir Path d) throws Exception {
         assertEquals(Verdict.MLE, run(d, "c", "main.c",
-                "#include <stdlib.h>\n#include <string.h>\nint main(){for(;;){char*p=malloc(8<<20);if(!p)return 1;memset(p,1,8<<20);}}", SUM).verdict());
+                "#include <stdlib.h>\n#include <string.h>\nint main(){for(;;){char*p=malloc(8<<20);if(!p)return 1;memset(p,1,8<<20);}}",
+                6_000, SUM).verdict());
     }
     @Test void forkBombIsContained(@TempDir Path d) throws Exception {
         JudgeResult r = run(d, "c", "main.c", "#include <unistd.h>\nint main(){for(;;)fork();}", SUM);
