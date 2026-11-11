@@ -29,4 +29,20 @@ describe('coding workspace helpers', () => {
     render(<RunResults r={{ verdict: 'CE', message: 'Compilation failed.', compileLog: 'main.c:3: error: expected ;', passed: 0, total: 1, millis: 400, mode: 'tests', tests: [] }} />)
     expect(screen.getByLabelText('Compiler output')).toHaveTextContent('expected ;')
   })
+  it('shows the internal execution error message', () => {
+    const message = 'Execution service temporarily unavailable.'
+
+    render(<RunResults r={{
+      verdict: 'IE',
+      message,
+      compileLog: '',
+      passed: 0,
+      total: 1,
+      millis: 500,
+      mode: 'tests',
+      tests: []
+    }} />)
+
+    expect(screen.getByText(message)).toBeInTheDocument()
+  })
 })

@@ -374,26 +374,26 @@ This playbook provides a complete, self-contained guide for presenting **Caliper
 ### Slide 11: Testing, Verification & Platform Support
 
 - **Recommended Duration**: 45 seconds
-- **Slide Title**: Verification: 238 Passing Automated Tests & Cross-Platform Support
+- **Slide Title**: Verification: 239 Passing Automated Tests & Cross-Platform Support
 - **What Appears on the Slide**:
-  - **238 Passing Automated Tests Across Four Suites**:
+  - **239 Passing Automated Tests Across Four Suites**:
     - `engine` (75 tests): Lexical tokenizers, identifier normalizers, Winnowing, RKR-GST tiling, AST parsing, and synthetic accuracy benchmarks.
     - `judge` (50 tests): Docker `runc` execution, gVisor provider, cross-platform path translation, timeout enforcement, and memory caps.
     - `backend` (74 tests): End-to-end acceptance scenarios, Spring application-context DI wiring, LTI 1.3 Advantage, rate limiting, and quiz strategy execution.
-    - `frontend` (39 tests): Vitest unit tests covering editor helpers, quiz runner, charts, and role-based navigation.
+    - `frontend` (40 tests): Vitest unit tests covering editor helpers, quiz runner, charts, and role-based navigation.
   - **Multi-Platform Engineering**:
     - Linux (Ubuntu 24.04): Full automated CI matrix running PostgreSQL, container builds, and the full test suite.
     - Windows 11/10: 8 production PowerShell scripts in `scripts/windows/`, path normalization for Docker Desktop WSL2, and automated engine/judge/frontend CI validation.
-  - **Visual Suggestion**: Test suite breakdown diagram showing the four test suites totaling 238 green tests alongside the GitHub Actions CI badge.
+  - **Visual Suggestion**: Test suite breakdown diagram showing the four test suites totaling 239 green tests alongside the GitHub Actions CI badge.
 
 #### Speaker Notes
 > "Software quality cannot be asserted through claims; it must be proven through automated testing.
 >
-> Caliper is verified by **238 automated tests** passing across our entire multi-module codebase:
+> Caliper is verified by **239 automated tests** passing across our entire multi-module codebase:
 > - **75 tests in `engine`** validate our lexical tokenizers, identifier normalization, Winnowing math, and Tree-sitter AST structural analysis.
 > - **50 tests in `judge`** exercise container execution, path normalization, timeout handling, and memory cap enforcement.
 > - **74 tests in `backend`** test end-to-end acceptance workflows against a live PostgreSQL database, LTI 1.3 grade passback, OpenPDF report generation, rate limiting, and our newly refactored `QuizGrader` dependency injection.
-> - **39 tests in `frontend`** run under Vitest to verify editor behavior, draft persistence, and role-aware navigation.
+> - **40 tests in `frontend`** run under Vitest to verify editor behavior, draft persistence, and role-aware navigation.
 >
 > Caliper also features first-class cross-platform engineering. On Windows, we provide 8 dedicated PowerShell scripts with syntax validation and automatic path translation in `DockerRunner` for Docker Desktop on WSL2. Our GitHub Actions CI matrix continuously validates both Linux and Windows runners."
 
@@ -583,7 +583,7 @@ If an unexpected failure occurs during the live demonstration, **execute these i
 
 | Category | Key Fact / Metric | Source Code Location |
 |:---|:---|:---|
-| **Automated Tests** | **238 total passing**: Engine 75, Judge 50, Backend 74, Frontend 39 | `mvn test` & `npm test` |
+| **Automated Tests** | **239 total passing**: Engine 75, Judge 50, Backend 74, Frontend 40 | `mvn test` & `npm test` |
 | **Java Platform** | Java 21 LTS / Java 25 compatible, Maven 3.9+ | `pom.xml` |
 | **Backend Framework** | Spring Boot 3.3.5, Spring Security JWT, Spring `JdbcClient` | `backend/pom.xml` |
 | **Frontend Stack** | React 18.3, TypeScript 5.6, Vite 5.4, CodeMirror 6 | `frontend/package.json` |
