@@ -10,7 +10,7 @@
 [![Docker](https://img.shields.io/badge/Sandbox-Docker%20%7C%20gVisor-2496ED.svg)](https://gvisor.dev/)
 [![LTI 1.3](https://img.shields.io/badge/LMS-LTI%201.3%20Advantage-6366F1.svg)](https://www.1edtech.org/standards/lti)
 [![Tree-sitter](https://img.shields.io/badge/AST-Tree--sitter-059669.svg)](https://tree-sitter.github.io/)
-[![Tests](https://img.shields.io/badge/Automated%20Tests-238%20Passing-success.svg)](https://github.com/HARSH4885-svg/Caliper/actions)
+[![Tests](https://img.shields.io/badge/Automated%20Tests-239%20Passing-success.svg)](https://github.com/HARSH4885-svg/Caliper/actions)
 [![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-lightgrey.svg)](https://github.com/HARSH4885-svg/Caliper)
 
 Caliper is a self-hosted, cross-platform academic evaluation engine and learning management platform designed for computer science education. It unifies an in-browser coding workspace with secure, pluggable containerised multi-language code execution (Docker `runc` and Google gVisor `runsc`), a dual-engine plagiarism investigation desk (lexical Winnowing + RKR-GST and Tree-sitter AST structural analysis), 1EdTech LTI 1.3 Advantage integration for Canvas LMS, and automated formal PDF audit report generation for academic integrity boards.
@@ -338,7 +338,7 @@ Caliper strictly adheres to object-oriented programming principles and design pa
 | **Similarity Engine** | Pure Java 21, Tree-sitter (Bonede bindings) | Lexical Winnowing ($k=10, w=5$), RKR-GST ($m=8$), and AST syntax subtree matching. |
 | **LMS Integration** | 1EdTech LTI 1.3 Advantage Core, JJWT 0.12.6 | OIDC authentication, Canvas course/role mapping, and AGS grade passback. |
 | **Report Generation** | OpenPDF 2.2.2 | Formal academic integrity hearing audit dossiers in PDF format. |
-| **Testing** | JUnit 5, Mockito, Vitest, React Testing Library | 238 automated unit, acceptance, integration, and scenario tests. |
+| **Testing** | JUnit 5, Mockito, Vitest, React Testing Library | 239 automated unit, acceptance, integration, and scenario tests. |
 
 ---
 
@@ -507,16 +507,16 @@ When booted with `SEED_DEMO=true`, Caliper populates a synthetic computer scienc
 
 ### Automated Test Suite Breakdown
 
-Caliper includes **238 automated tests** passing across four distinct test suites:
+Caliper includes **239 automated tests** passing across four distinct test suites:
 
 ```
 Test Suite Distribution:
 ├── engine:   75 tests (Lexer, Winnowing, RKR-GST, Tree-sitter AST similarity, benchmarks)
 ├── judge:    50 tests (Docker runc, gVisor provider, cross-platform paths, timeouts, memory limits)
 ├── backend:  74 tests (Acceptance end-to-end, LTI 1.3 Advantage, OpenPDF service, rate limiting, quiz strategies)
-└── frontend: 39 tests (Vitest: editor helpers, quiz runner, charts, navigation)
+└── frontend: 40 tests (Vitest: editor helpers, quiz runner, charts, navigation)
 ──────────────────────────────────────────────────────────────────────────
-Total:       238 passing automated tests
+Total:       239 passing automated tests
 ```
 
 ### Running Tests

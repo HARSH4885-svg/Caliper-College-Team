@@ -19,8 +19,8 @@ All numbers below come from test runs executed during this build (Java 21, Linux
 | engine | 75 | 0 | 0 |
 | judge | 50 (25 unit/cross-platform + 25 Docker) | 0 | 0 |
 | backend | 74 (10 storage/ZIP + 32 acceptance + 3 rate limiter + 11 quiz/strategy + 7 LTI + 7 assignment + 2 worker + 2 report) | 0 | 0 |
-| frontend (vitest) | 39 | 0 | 0 |
-| **Total** | **238** | **0** | **0** |
+| frontend (vitest) | 40 | 0 | 0 |
+| **Total** | **239** | **0** | **0** |
 
 Docker/DB-dependent tests use JUnit Assumptions: on a machine without Docker they are **skipped, not passed**. They ran here.
 
